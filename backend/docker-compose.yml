@@ -35,6 +35,22 @@ services:
     volumes:
       - appointment_postgres_data:/var/lib/postgresql/data
 
+  diagnosis-db:
+    image: postgres:17
+    container_name: diagnosis-db
+    environment:
+      POSTGRES_DB: diagnosis_db
+      POSTGRES_USER: mediassist_user
+      POSTGRES_PASSWORD: mediassist_password
+    ports:
+      - "5436:5432"
+    volumes:
+      - diagnosis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U mediassist_user -d diagnosis_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   rabbitmq:
     image: rabbitmq:4-management
     container_name: mediassist-rabbitmq
@@ -49,3 +65,4 @@ volumes:
   patient_postgres_data:
   doctor_postgres_data:
   appointment_postgres_data:
+  diagnosis_data:
