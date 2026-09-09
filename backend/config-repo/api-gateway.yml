@@ -22,6 +22,16 @@ spring:
           predicates:
             - Path=/api/appointments/**
 
+        - id: diagnosis-service
+          uri: lb://diagnosis-service
+          predicates:
+            - Path=/api/diagnoses/**
+
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/api/ai/**
+
 eureka:
   client:
     service-url:
