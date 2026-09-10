@@ -12,6 +12,11 @@ spring:
           predicates:
             - Path=/api/patients/**
 
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/auth/**
+
         - id: doctor-service
           uri: lb://doctor-service
           predicates:
@@ -31,6 +36,8 @@ spring:
           uri: lb://ai-service
           predicates:
             - Path=/api/ai/**
+          filters:
+            - StripPrefix=1
 
 eureka:
   client:

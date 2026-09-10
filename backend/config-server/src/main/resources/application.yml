@@ -10,4 +10,6 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///C:/Users/hp/Desktop/MediAssist%20AI/backend/config-repo
+          # Can be overridden in deployment with CONFIG_REPO_PATH.  A relative
+          # location keeps a local clone runnable from any user directory.
+          search-locations: file:${CONFIG_REPO_PATH:../config-repo}

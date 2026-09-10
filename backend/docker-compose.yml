@@ -11,6 +11,18 @@ services:
     volumes:
       - patient_postgres_data:/var/lib/postgresql/data
 
+  auth-postgres:
+    image: postgres:17
+    container_name: mediassist-auth-postgres
+    environment:
+      POSTGRES_USER: mediassist_user
+      POSTGRES_PASSWORD: mediassist_password
+      POSTGRES_DB: auth_db
+    ports:
+      - "5437:5432"
+    volumes:
+      - auth_postgres_data:/var/lib/postgresql/data
+
   doctor-postgres:
     image: postgres:17
     container_name: mediassist-doctor-postgres
@@ -63,6 +75,7 @@ services:
 
 volumes:
   patient_postgres_data:
+  auth_postgres_data:
   doctor_postgres_data:
   appointment_postgres_data:
   diagnosis_data:

@@ -1,0 +1,21 @@
+# Java / Maven
+**/target/
+**/.mvn/timing.properties
+
+# Python
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+
+# Local configuration and editor files
+**/.env
+**/.env.*
+!**/.env.example
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db

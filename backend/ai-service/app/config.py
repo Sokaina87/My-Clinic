@@ -8,6 +8,7 @@ class Settings(BaseSettings):
 
     # Eureka
     eureka_server: str = "http://eureka_server:8761/eureka"
+    eureka_enabled: bool = True
 
     # Auth-Service (pour récupérer un JWT technique)
     auth_service_client_id: str = ""
@@ -18,7 +19,7 @@ class Settings(BaseSettings):
 
     # LLM (Gemini)
     google_api_key: str = ""
-    gemini_model: str = "gemini-3.6-flash"
+    gemini_model: str = "gemini-3.6-flash"  # Recommended model by Google API
 
     class Config:
         env_file = ".env"
