@@ -1,0 +1,12 @@
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\client\AiClient.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\client\PatientClient.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\controller\DiagnosisController.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\DiagnosisServiceApplication.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\dto\DiagnosisRequest.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\dto\DiagnosisResponse.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\entity\Diagnosis.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\entity\DiagnosisStatus.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\exception\DiagnosisNotFoundException.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\repository\DiagnosisRepository.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\service\DiagnosisService.java
+C:\Users\hp\Desktop\MediAssist AI\backend\Diagnosis_Service\src\main\java\org\gestionetudiant\diagnosis_service\service\DiagnosisServiceImpl.java
