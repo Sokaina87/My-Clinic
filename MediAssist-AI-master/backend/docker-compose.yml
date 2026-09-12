@@ -1,0 +1,81 @@
+services:
+  patient-postgres:
+    image: postgres:17
+    container_name: mediassist-patient-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${PATIENT_DB}
+    ports:
+      - "5433:5432"
+    volumes:
+      - patient_postgres_data:/var/lib/postgresql/data
+
+  auth-postgres:
+    image: postgres:17
+    container_name: mediassist-auth-postgres
+    environment:
+      POSTGRES_USER: mediassist_user
+      POSTGRES_PASSWORD: mediassist_password
+      POSTGRES_DB: auth_db
+    ports:
+      - "5437:5432"
+    volumes:
+      - auth_postgres_data:/var/lib/postgresql/data
+
+  doctor-postgres:
+    image: postgres:17
+    container_name: mediassist-doctor-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DOCTOR_DB}
+    ports:
+      - "5434:5432"
+    volumes:
+      - doctor_postgres_data:/var/lib/postgresql/data
+
+  appointment-postgres:
+    image: postgres:17
+    container_name: mediassist-appointment-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${APPOINTMENT_DB}
+    ports:
+      - "5435:5432"
+    volumes:
+      - appointment_postgres_data:/var/lib/postgresql/data
+
+  diagnosis-db:
+    image: postgres:17
+    container_name: diagnosis-db
+    environment:
+      POSTGRES_DB: diagnosis_db
+      POSTGRES_USER: mediassist_user
+      POSTGRES_PASSWORD: mediassist_password
+    ports:
+      - "5436:5432"
+    volumes:
+      - diagnosis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U mediassist_user -d diagnosis_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: mediassist-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  patient_postgres_data:
+  auth_postgres_data:
+  doctor_postgres_data:
+  appointment_postgres_data:
+  diagnosis_data:

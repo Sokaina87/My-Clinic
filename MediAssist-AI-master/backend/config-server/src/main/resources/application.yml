@@ -1,0 +1,15 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          # Can be overridden in deployment with CONFIG_REPO_PATH.  A relative
+          # location keeps a local clone runnable from any user directory.
+          search-locations: file:${CONFIG_REPO_PATH:../config-repo}
