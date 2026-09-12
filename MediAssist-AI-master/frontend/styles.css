@@ -790,6 +790,69 @@ textarea {
   flex: 1;
 }
 
+/* Assistant conversation */
+.chat:has(.assistant-message) {
+  background: radial-gradient(circle at 90% 5%, #e1f8f3 0, transparent 24%), linear-gradient(180deg, #f9fcfb, #eff8f6);
+  padding: 24px;
+}
+.message.me { display: grid; gap: 4px; }
+.message.me small { color: #39756d; font-size: 10px; text-align: right; }
+.assistant-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  max-width: min(88%, 720px);
+  padding: 15px 17px 13px 12px;
+  border-color: #d7ebe6;
+  box-shadow: 0 8px 24px rgba(9, 94, 82, .07);
+}
+.assistant-avatar {
+  align-items: center;
+  background: linear-gradient(145deg, #0d8275, #054f47);
+  border-radius: 11px;
+  color: #d7fff7;
+  display: inline-flex;
+  flex: 0 0 30px;
+  font-size: 15px;
+  font-weight: 800;
+  height: 30px;
+  justify-content: center;
+  margin-top: 1px;
+}
+.assistant-message > div:last-child { min-width: 0; }
+.assistant-message b { color: #075d54; display: block; font-size: 11px; letter-spacing: .05em; }
+.assistant-message p { color: #173632; line-height: 1.7; margin: 9px 0; white-space: normal; }
+.assistant-message p strong { color: #075d54; display: inline-block; font: 800 12px/1.35 Manrope, sans-serif; letter-spacing: .01em; margin: 10px 0 3px; }
+.assistant-message p strong:first-child { margin-top: 0; }
+.assistant-message small { color: #6b817d; display: block; font-size: 10px; }
+.typing-dots { display: inline-flex; gap: 4px; margin: 9px 0 5px; }
+.typing-dots i { animation: chatTyping 1.05s infinite ease-in-out; background: #24ad9c; border-radius: 50%; display: block; height: 6px; width: 6px; }
+.typing-dots i:nth-child(2) { animation-delay: .15s; }
+.typing-dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes chatTyping { 0%, 60%, 100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-4px); } }
+.chat-form .button.is-loading { cursor: wait; opacity: .72; }
+.error-message { border-color: #f3c4c9; background: #fff8f8; }
+.error-message .assistant-avatar { background: #c53848; }
+
+/* Medication catalogue */
+.medication-result { margin-top: 20px; }
+.medication-found { align-items: flex-start; background: #edfaf6; border: 1px solid #c6eee4; border-radius: 14px; display: flex; gap: 10px; margin-bottom: 12px; padding: 13px; }
+.medication-found > span { align-items: center; background: #0d8275; border-radius: 50%; color: white; display: flex; font-weight: 800; height: 22px; justify-content: center; width: 22px; }
+.medication-found b, .medication-found small { display: block; }
+.medication-found small { color: var(--muted); font-size: 11px; line-height: 1.45; margin-top: 4px; }
+.medication-card { background: #fff; border: 1px solid #dceae7; border-radius: 14px; margin-top: 10px; padding: 15px; }
+.medication-card h5 { color: var(--ink); font: 800 15px Manrope, sans-serif; margin: 0 0 12px; }
+.medication-card h5 span { color: var(--teal); font-size: 12px; margin-left: 5px; }
+.medication-card dl { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); margin: 0; }
+.medication-card dt { color: var(--muted); font-size: 10px; margin-bottom: 3px; text-transform: uppercase; }
+.medication-card dd { color: var(--ink); font-size: 12px; margin: 0; }
+@media (max-width: 700px) { .medication-card dl { grid-template-columns: 1fr; } }
+.record-history { margin-top: 20px; }
+.appointment-confirmation { background:#f4fbf9; border:1px solid #c6eee4; border-radius:14px; display:grid; gap:9px; margin-top:12px; padding:14px; }
+.appointment-confirmation input { padding:10px; }
+.appointment-confirmation small { color:var(--muted); }
+.space-badge { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); border-radius: 9px; color: #bbf5e9; font-size: 10px; font-weight: 800; letter-spacing: .08em; margin: 18px 0 8px; padding: 9px 11px; }
+
 .calendar {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

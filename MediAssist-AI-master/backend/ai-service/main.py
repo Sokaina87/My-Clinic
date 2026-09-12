@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import chat, doctor_assistant, extraction, follow_up, health, patient_chat, summary, triage
+from app.api.routes import appointment_requests, chat, doctor_assistant, extraction, follow_up, health, medications, patient_chat, summary, triage
 from app.clients.eureka import deregister_from_eureka, register_with_eureka
 from app.config import settings
 from app.core.logging import setup_logging
@@ -39,3 +39,5 @@ app.include_router(summary.router, prefix="/ai", tags=["summary"])
 app.include_router(extraction.router, prefix="/ai", tags=["extraction"])
 app.include_router(follow_up.router, prefix="/ai", tags=["follow-up"])
 app.include_router(doctor_assistant.router, prefix="/ai", tags=["doctor-assistant"])
+app.include_router(medications.router, prefix="/ai", tags=["medications"])
+app.include_router(appointment_requests.router, prefix="/ai", tags=["appointments"])

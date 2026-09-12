@@ -10,6 +10,7 @@ services:
       - "5433:5432"
     volumes:
       - patient_postgres_data:/var/lib/postgresql/data
+      - ./patient-db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
 
   auth-postgres:
     image: postgres:17
@@ -34,6 +35,7 @@ services:
       - "5434:5432"
     volumes:
       - doctor_postgres_data:/var/lib/postgresql/data
+      - ./doctor-db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
 
   appointment-postgres:
     image: postgres:17
@@ -46,6 +48,7 @@ services:
       - "5435:5432"
     volumes:
       - appointment_postgres_data:/var/lib/postgresql/data
+      - ./appointment-db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
 
   diagnosis-db:
     image: postgres:17
@@ -58,8 +61,27 @@ services:
       - "5436:5432"
     volumes:
       - diagnosis_data:/var/lib/postgresql/data
+      - ./diagnosis-db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U mediassist_user -d diagnosis_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  medication-postgres:
+    image: pgvector/pgvector:pg17
+    container_name: mediassist-medication-postgres
+    environment:
+      POSTGRES_DB: medication_db
+      POSTGRES_USER: mediassist_user
+      POSTGRES_PASSWORD: mediassist_password
+    ports:
+      - "5438:5432"
+    volumes:
+      - medication_postgres_data:/var/lib/postgresql/data
+      - ./medication-db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mediassist_user -d medication_db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -79,3 +101,4 @@ volumes:
   doctor_postgres_data:
   appointment_postgres_data:
   diagnosis_data:
+  medication_postgres_data:

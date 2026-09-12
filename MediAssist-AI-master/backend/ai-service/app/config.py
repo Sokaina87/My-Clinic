@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     gemini_model: str = "gemini-3.6-flash"  # Recommended model by Google API
     gemini_fallback_model: str = "gemini-3.5-flash"
 
+    # Catalogue local de médicaments (PostgreSQL + pgvector)
+    medication_database_url: str = "postgresql://mediassist_user:mediassist_password@localhost:5438/medication_db"
+    doctor_database_url: str = "postgresql://mediassist_user:mediassist_password@localhost:5434/doctor_db"
+    appointment_database_url: str = "postgresql://mediassist_user:mediassist_password@localhost:5435/appointment_db"
+
     class Config:
         env_file = ".env"
 
